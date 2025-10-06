@@ -20,13 +20,9 @@ const Login: React.FC = () => {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json',
+            "Content-Type": "application/x-www-form-urlencoded"
           },
-          body: JSON.stringify({
-            usr: 'username or email',
-            pwd: 'password'
-          })
-
+          body: new URLSearchParams({ usr: username, pwd: password }),
         });
 
         if (response.ok) {
