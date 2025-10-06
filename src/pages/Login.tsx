@@ -10,7 +10,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     console.log("username:", username, "Password:", password);
     // Add login logic here (API call, validation, etc.)
-    
+
     const fetchUserData = async () => {
       const apiurl = import.meta.env.VITE_API_URL;
 
@@ -30,14 +30,6 @@ const Login: React.FC = () => {
           console.log("response ok");
           console.log("login successful");
           console.log("response all;", response);
-          const res = await fetch(`${apiurl}/api/method/frappe.auth.get_logged_user`, {
-            credentials: 'include'
-          });
-          const user = await res.json();
-          console.log("user", user);
-
-
-
           navigate('/add-item');
         } else {
           console.log("login failed");
