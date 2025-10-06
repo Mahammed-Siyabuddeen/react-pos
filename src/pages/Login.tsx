@@ -19,10 +19,14 @@ const Login: React.FC = () => {
         const response = await fetch(`${apiurl}/api/method/login`, {
           method: 'POST',
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
           },
-          body: new URLSearchParams({ usr: username, pwd: password }),
-          credentials: "include",
+          body: JSON.stringify({
+            usr: 'username or email',
+            pwd: 'password'
+          })
+
         });
 
         if (response.ok) {
