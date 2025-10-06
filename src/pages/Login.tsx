@@ -10,16 +10,21 @@ const Login: React.FC = () => {
     e.preventDefault();
     console.log("username:", username, "Password:", password);
     // Add login logic here (API call, validation, etc.)
+    
     const fetchUserData = async () => {
       const apiurl = import.meta.env.VITE_API_URL;
+
       try {
+
         const response = await fetch(`${apiurl}/api/method/login`, {
           method: 'POST',
           headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           body: new URLSearchParams({ usr: username, pwd: password }),
-        }
-        );
+          credentials: "include",
+        });
+
         if (response.ok) {
 
           console.log("response ok");
@@ -29,7 +34,7 @@ const Login: React.FC = () => {
             credentials: 'include'
           });
           const user = await res.json();
-          console.log("user",user);
+          console.log("user", user);
 
 
 
